@@ -1,0 +1,241 @@
+html {
+	height: 100%;
+/*	width: 100% !important;*/
+}
+
+body {
+	height: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	margin: 0;
+	font-family: Arial;
+}
+
+	/*Navigation bar*/
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		
+		/*background-color: #333;*/
+		overflow: visible;
+/*		position: fixed;*/
+		top: 0;
+		width: 100%;
+		/*border-bottom: 1px solid black;*/
+		font-size: 18px;
+	}
+	#main-hr {
+		display: inline-block;
+		width: 100%;
+		border: 0;
+		border-top: 1px solid #eee;
+		overflow: hidden;
+
+	}
+
+	#logo {
+		float: left;
+		padding-left: 15%;
+	}
+
+	li {
+		float: right;
+	}
+
+	li a {
+		text-decoration: none;
+		display: block;
+		text-align: center;
+		padding: 18px 16px;
+		color: white;
+	}
+
+	#nav-right {
+		padding-right: 10%;
+	}
+
+/*Dropdown bar*/
+		#right-nav {
+			/*margin-right: 15%;*/
+		}
+		.dropbtn {
+			background: none;
+			border: none;
+			cursor: pointer;
+			font-size: 18px;
+			color: white;
+			padding: 18px 16px;
+
+			-webkit-transition: color 0.5s;
+			transition: color 0.5s;
+		}
+		.dropbtn:hover {
+			color: red;
+		}
+		.dropdown {
+			position: relative;
+			display: inline-block;
+			text-decoration: none;
+			text-align: center;
+			/*padding: 14px 16px;*/
+			color: black;
+
+		}
+
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			min-width: 120px;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			padding: 10px 12px;
+			z-index: 1;
+/*			background-color: #b7b7b7;
+			opacity: 0.5;*/
+			background: rgba(85, 85, 85, 0.5);
+			margin-top: 6px;
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		/*to jakos polaczyc z dropbtn transition*/
+		a {
+			-webkit-transition: color 0.5s;
+			transition: color 0.5s;
+		}
+		a:hover {
+			color: red;
+		}
+
+/*Main content*/
+	h1, h4, h3 {
+		text-align: center;
+		color: white;
+	}
+	h1 {
+		padding-top: 9%;
+		margin-top: 0;
+	}
+
+	h4 {
+		padding: 0 30%;
+	}
+
+	#main-content {
+		/*height: 500px;*/
+		height: 70% !important;
+		margin: 0;
+		padding-top: 0;
+		background-image: url("photo1.jpeg");
+		background-repeat: no-repeat;
+		background-position: top;
+		background-size: cover;
+	}
+	/*Red "button"*/
+	#main-content-button {
+		margin: 20px 39%;
+		border: 1px solid red;
+		margin-bottom: 0;
+		background-color: rgba(255, 0, 0, 1);
+		padding: 10px;
+
+		-webkit-transition: all 0.6s;
+		transition: all 0.6s;
+
+		transition-property: background-color, border;
+	}
+
+	#main-content-button:hover {
+		background-color: rgba(255, 0, 0 ,0);
+		border: 1px solid white;
+	}
+
+/*Grid with color transitions*/
+	#grid-container {
+		
+		display: block;
+
+	}
+	.grid {
+		height: 220px;
+		width: 24%;
+		display: inline-block;
+		
+		margin: 2% 0;
+
+		/*bez verticala div sie rusza*/
+		vertical-align: top;
+		-webkit-transition: box-shadow 0.6s;
+		transition: box-shadow 0.6s;
+	}
+
+	.grid-middle {
+		margin: 2% 3.45%;
+	}
+	.grid-right {
+		margin-right: 10%;
+		
+	}
+	.grid-left {
+		margin-left: 10%;
+	
+	}
+
+	/*Ikony*/
+	.icon-div {
+		text-align: center;
+		margin-top: 20px;
+	}
+
+	.icon-div p {
+		margin-right: 8%;
+		margin-left: 8%;
+		font-size: 16px;
+	}
+	.grid-title {
+		font-weight: bold;
+
+	}
+	
+	i {
+		-webkit-transition: color 0.6s;
+		transition: color 0.6s;
+	}
+
+	.grid:hover i {
+		color: red;
+	}
+
+	.grid:hover {
+	
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	}
+
+
+/*Camera content*/
+	#camera-content {
+		height: 78%;
+
+		margin: 0;
+		padding-top: 0;
+		background-image: url("cameraph.jpg");
+		background-repeat: no-repeat;
+		background-position: top;
+		background-size: contain;
+	}
+
+	#camera-content h3 {
+		padding-top: 8%;
+		margin-bottom: 0;
+	}
+
+	#camera-hr {
+		
+		width: 7%;
+		border: 0;
+		border-top: 3px solid red;
+		
+	}
