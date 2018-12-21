@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+
+
+	<title>Znajdz lekarza</title>
+ 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+
+ 	{% load static %} 
+
+ 	<link rel="stylesheet" href="{% static 'webapp/fonts/icomoon/style.css' %}">
+	<link rel="stylesheet" href="{% static 'webapp/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'webapp/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'webapp/css/jquery-ui.css' %}">
+	<link rel="stylesheet" href="{% static 'webapp/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'webapp/css/owl.theme.default.min.css' %}">
+	<link rel="stylesheet" href="{% static 'webapp/css/bootstrap-datepicker.css' %}">
+	<link rel="stylesheet" href="{% static 'webapp/css/animate.css' %}">
+	
+
+<!-- 
+	<link rel="stylesheet" href="{fonts/icomoon/style.css}">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/animate.css"> -->
+
+    <link rel="stylesheet" href="{% static 'webapp/fonts/flaticon/font/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'webapp/css/fl-bigmug-line.css' %}">
+    <link rel="stylesheet" href="{% static 'webapp/css/aos.css' %}">
+    
+<!--     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/fl-bigmug-line.css">
+  
+    <link rel="stylesheet" href="css/aos.css"> -->
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+
+<!-- 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" /> -->
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static 'webapp/css/style.css' %}">
+	<link type="text/css" rel="stylesheet" href="{% static 'webapp/css/navbar.css' %}">
+
+<!-- 
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="css/navbar.css" /> -->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+    <header class="site-navbar py-1" id= "my-header" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+          
+          <div class="col-6 col-xl-2">
+            <h1 class="mb-0"><a href="{% url 'webapp:index' %}" class="text-black h2 mb-0">znajdz<strong>Lekarza</strong></a></h1>
+          </div>
+
+          <div class="col-10 col-xl-10 d-none d-xl-block">
+            <nav class="site-navigation text-right" role="navigation">
+
+              <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li class="active"><a href="{% url 'webapp:index' %}">Strona główna</a></li>
+   				<!-- <li><a href="{% url 'webapp:login' %}">Konto</a></li> -->
+   				{% if user.is_authenticated %}
+        			<li><a href="{% url 'webapp:logout' %}">Wyloguj</a></li>
+        		{% else %}
+        			<li><a href="{% url 'webapp:login' %}">Konto</a></li>
+    			{% endif %}
+              </ul>
+            </nav>
+          </div>
+
+          <div class="col-6 col-xl-2 text-right d-block">
+            
+            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+
+        </div>
+      </div>
+     
+    </header>
+
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 col-md-push-5">
+						<div class="booking-cta">
+							<h1>Zarezerwuj</h1>
+							<h1>wizytę</h1>
+						</div>
+					</div>
+					<div class="col-md-4 col-md-pull-7">
+						<div class="booking-form">
+							<form>
+								<div class="form-group">
+									<span class="form-label">Specjalizacja</span>
+									<select class="form-control" name="specialization">
+										<option value="" selected disabled>Wybierz</option>
+										<option>Ortopeda</option>
+										<option>Okulista</option>
+										<option>Chirurg</option>
+									</select>
+									<span class="select-arrow"></span>
+										</div>
+								<div class="form-group">
+									<span class="form-label">Miasto</span>
+									<input class="form-control" type="text" name="city" placeholder="np. Wrocław, Warszawa, Gdańsk">
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Termin od:</span>
+											<input class="form-control" type="date" name="start-date">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Termin do:</span>
+											<input class="form-control" type="date" name="end-date">
+										</div>
+									</div>
+								</div>
+
+								<div class="form-btn">
+									<button class="submit-btn" type="submit"><a href="{% url 'webapp:search' %}">Szukaj wolnych terminów</a></button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
