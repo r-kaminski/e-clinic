@@ -80,6 +80,7 @@
                 <li class="active"><a href="{% url 'webapp:index' %}">Strona główna</a></li>
    				<!-- <li><a href="{% url 'webapp:login' %}">Konto</a></li> -->
    				{% if user.is_authenticated %}
+   					<li><a href="{% url 'webapp:view_appointments' %}">Moje wizyty</a></li>
         			<li><a href="{% url 'webapp:logout' %}">Wyloguj</a></li>
         		{% else %}
         			<li><a href="{% url 'webapp:login' %}">Konto</a></li>
@@ -111,38 +112,57 @@
 					</div>
 					<div class="col-md-4 col-md-pull-7">
 						<div class="booking-form">
-							<form>
+							<form method="post">
+								{% csrf_token %}
 								<div class="form-group">
+									<!-- //TODO: SELECT JAKO INPUT??????????????????????????????????? -->
 									<span class="form-label">Specjalizacja</span>
-									<select class="form-control" name="specialization">
+									<select class="form-control" name="specialization" id="specialization">
 										<option value="" selected disabled>Wybierz</option>
-										<option>Ortopeda</option>
+										{% for spec in specs %}
+										<option value="{{ spec }}">{{ spec }}</option>
+										{% endfor %}
+										<!-- <option>Ortopeda</option>
 										<option>Okulista</option>
-										<option>Chirurg</option>
+										<option>Chirurg</option> -->
 									</select>
 									<span class="select-arrow"></span>
 										</div>
 								<div class="form-group">
 									<span class="form-label">Miasto</span>
-									<input class="form-control" type="text" name="city" placeholder="np. Wrocław, Warszawa, Gdańsk">
+									<select class="form-control" name="city" id="city">
+										<option value="" selected disabled>Wybierz</option>
+										{% for city in cities %}
+										<option value="{{ city }}">{{ city }}</option>
+										{% endfor %}
+										<!-- <option>Ortopeda</option>
+										<option>Okulista</option>
+										<option>Chirurg</option> -->
+									</select>
 								</div>
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group">
 											<span class="form-label">Termin od:</span>
-											<input class="form-control" type="date" name="start-date">
+											<input class="form-control" type="date" name="start_date" id="start_date">
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
 											<span class="form-label">Termin do:</span>
-											<input class="form-control" type="date" name="end-date">
+											<input class="form-control" type="date" name="end_date" id="end_date">
 										</div>
 									</div>
 								</div>
 
 								<div class="form-btn">
-									<button class="submit-btn" type="submit"><a href="{% url 'webapp:search' %}">Szukaj wolnych terminów</a></button>
+									<button class="submit-btn" type="submit" href="{% url 'webapp:search' %}">Szukaj wolnych terminów</button>
+									{% if warning_no_specs %}
+										<span class="form-label text-danger">Wybierz specjalizację</span>
+									{% endif %}
+									{% if warning_no_apps %}
+										<span class="form-label text-danger">Nie znaleziono żadnych wizyt</span>
+									{% endif %}
 								</div>
 							</form>
 						</div>
@@ -151,6 +171,6 @@
 			</div>
 		</div>
 	</div>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>

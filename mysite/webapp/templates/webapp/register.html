@@ -4,7 +4,7 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500"> 
     
 	{% load static %} 
  	<link rel="stylesheet" href="{% static 'webapp/fonts/icomoon/style.css' %}">
@@ -16,55 +16,28 @@
 	<link rel="stylesheet" href="{% static 'webapp/css/bootstrap-datepicker.css' %}">
 	<link rel="stylesheet" href="{% static 'webapp/css/animate.css' %}">
 
-    <!-- <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/animate.css"> -->
-    
     <link rel="stylesheet" href="{% static 'webapp/fonts/flaticon/font/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'webapp/css/fl-bigmug-line.css' %}">
     <link rel="stylesheet" href="{% static 'webapp/css/aos.css' %}">
 
-  <!--   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/fl-bigmug-line.css">
-  
-    <link rel="stylesheet" href="css/aos.css"> -->
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
-  <!-- Bootstrap -->
-<!--   <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" /> -->
-<!--===============================================================================================-->	
-<!-- 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
-<!--===============================================================================================-->
 	<link rel="stylesheet" href="{% static 'webapp/vendor/bootstrap/css/bootstrap.min.css' %}">
-<!-- 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"> -->
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" href="{% static 'webapp/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-<!-- 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"> -->
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" href="{% static 'webapp/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
-<!-- 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css"> -->
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" href="{% static 'webapp/vendor/animate/animate.css' %}">
-<!-- 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css"> -->
-<!--===============================================================================================-->	
+
 	<link rel="stylesheet" href="{% static 'webapp/vendor/css-hamburgers/hamburgers.min.css' %}">
-<!-- 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css"> -->
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" href="{% static 'webapp/vendor/animsition/css/animsition.min.css' %}">
-<!-- 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css"> -->
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" href="{% static 'webapp/vendor/select2/select2.min.css' %}">
-	<!-- <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css"> -->
-<!--===============================================================================================-->	
+
 	<link rel="stylesheet" href="{% static 'webapp/vendor/daterangepicker/daterangepicker.css' %}">
-<!-- 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"> -->
-<!--===============================================================================================-->
+
 	<link rel="stylesheet" href="{% static 'webapp/css/util.css' %}">
 	<link rel="stylesheet" href="{% static 'webapp/css/login.css' %}">
 	<link rel="stylesheet" href="{% static 'webapp/css/navbar.css' %}">
@@ -83,12 +56,11 @@
             <nav class="site-navigation text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="{% url 'webapp:index' %}">Strona główna</a></li>
-   				<!-- <li><a href="{% url 'webapp:login' %}">Konto</a></li> -->
+                <li><a href="{% url 'webapp:index' %}">Strona główna</a></li>
    				{% if user.is_authenticated %}
         			<li><a href="{% url 'webapp:logout' %}">Wyloguj</a></li>
         		{% else %}
-        			<li><a href="{% url 'webapp:login' %}">Konto</a></li>
+        			<li class="active"><a href="{% url 'webapp:login' %}">Konto</a></li>
     			{% endif %}
               </ul>
             </nav>
@@ -114,24 +86,6 @@
 					<span class="login100-form-title p-b-33">
 						Rejestracja
 					</span>
-<!-- 					<div class="wrap-input100 rs1 validate-input" data-validate="To pole wymagane">
-						<input class="input100" type="text" name="first_name" maxlength="30" required id="id_first_name" placeholder="Imię">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-
-					<div class="wrap-input100 rs1 validate-input" data-validate="To pole wymagane">
-						<input class="input100" type="text" name="last_name" maxlength="150" required id="id_last_name" placeholder="Nazwisko">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-
-					<div class="wrap-input100 rs1 validate-input" data-validate="To pole wymagane">
-						<input class="input100" type="email" name="email" required id="id_email" placeholder="Email">
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div> -->
-
 
 					<div class="wrap-input100 rs1 validate-input" data-validate="To pole wymagane">
 						<input class="input100" type="text" name="username" maxlength="150" required id="id_username" placeholder="Login">
@@ -148,34 +102,26 @@
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
-					
-
-<!-- 					<div class="wrap-input100 rs1 validate-input" data-validate="Imię jest wymagane">
-						<input class="input100" type="text" name="first_name" id="id_first_name" placeholder="Imię">
+					<div class="wrap-input100 rs1 validate-input" data-validate="To pole wymagane">
+						<input class="input100" type="text" name="first_name" maxlength="30" required id="id_first_name" placeholder="Imię">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
-
-					<div class="wrap-input100 rs1 validate-input" data-validate="Nazwisko jest wymagane">
-						<input class="input100" type="text" name="last_name" id="id_last_name" placeholder="Nazwisko">
+					<div class="wrap-input100 rs1 validate-input" data-validate="To pole wymagane">
+						<input class="input100" type="text" name="last_name" maxlength="50" required id="id_last_name" placeholder="Nazwisko">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Email jest wymagany: ex@abc.xyz">
-						<input class="input100" type="text" name="email" id="id_email" placeholder="Email">
+					<div class="wrap-input100 rs1 validate-input" data-validate="To pole wymagane">
+						<input class="input100" type="email" name="email" maxlength="50" required id="id_email" placeholder="E-mail">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
-
-					<div class="wrap-input100 rs1 validate-input" data-validate="Hasło jest wymagane">
-						<input class="input100" type="password" name="password1" id="id_password1" placeholder="Hasło">
+					<div class="wrap-input100 rs1 validate-input" data-validate="To pole wymagane">
+						<input class="input100" type="number" name="telephone_number"required id="id_telephone_number" placeholder="Numer telefonu">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
-					</div> -->
-
-
-
+					</div>
 					<div class="container-login100-form-btn m-t-20">
 						<button class="login100-form-btn" type="submit">
 							Zarejestruj się

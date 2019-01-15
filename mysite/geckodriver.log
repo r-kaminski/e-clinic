@@ -1,0 +1,10 @@
+1547116796816	geckodriver	INFO	geckodriver 0.21.0
+1547116796824	geckodriver	INFO	Listening on 127.0.0.1:60573
+1547116798036	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.1WL22btHZwou"
+1547116799658	Marionette	INFO	Listening on port 36185
+1547116799751	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://start.fedoraproject.org/, line 292: TypeError: $(...).uls is not a function
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Closed channel: cannot send/recv
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping

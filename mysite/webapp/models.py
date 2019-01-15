@@ -1,10 +1,3 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
-#   * Remove `` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models, connection
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -64,6 +57,7 @@ class Patient(models.Model):
 
 class Appointment(models.Model):
     appointment_id = models.IntegerField(primary_key=True)
+    price = models.IntegerField()
     doctor = models.ForeignKey(Doctor, models.DO_NOTHING)
     patient = models.ForeignKey(Patient, models.DO_NOTHING, blank=True, null=True)
     appointment_date = models.DateField()
@@ -73,20 +67,23 @@ class Appointment(models.Model):
         db_table = 'appointment'
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, models.DO_NOTHING, blank=True, null=True)
+
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
 
 #@receiver(post_save, sender=User)
 #def create_user_profile(sender, instance, created, **kwargs):
 #    if created:
 #        Profile.objects.create(user=instance)
 #
+#
 #@receiver(post_save, sender=User)
 #def save_user_profile(sender, instance, **kwargs):
 #    instance.profile.save()
-
-
-#class Insertion():
-#
-#    def insert_clinic(self, street, building_number, city, name, reception_telephone, email):
-#        cursor = connection.cursor()
-#        cursor.callproc('insert_clinic', [street, building_number, city, name, reception_telephone, email,])
-#        cursor.close()
