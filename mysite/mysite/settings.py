@@ -28,7 +28,7 @@ SECRET_KEY = '8c_bntfe-aaa$cmhaur52e!f5kh^hj4#+gvd-=k250k^_hlw*d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', ]
 
 
 # Application definition
@@ -73,18 +73,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'orcl',
-        'USER': 'django',
-        'PASSWORD': 'Asdfgh123.',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
@@ -133,9 +134,9 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-        os.path.join(PROJECT_DIR, 'staticfiles'),
-        )
+# STATICFILES_DIRS = (
+#         os.path.join(PROJECT_DIR, 'staticfiles'),
+#         )
 
 
 

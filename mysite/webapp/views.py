@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 import sys
 
-from django.db import connection
+# from django.db import connection
 
 from .models import Clinic, Doctor, Address, Appointment, Data, Patient
 from django.contrib.auth.forms import UserCreationForm
@@ -177,9 +177,14 @@ def register(request):
             email = form.cleaned_data.get('email')
             telephone_number = form.cleaned_data.get('telephone_number')
 
-            cursor = connection.cursor()
-            cursor.callproc('INSERT_PATIENT', [first_name, last_name, telephone_number, email,])
-            patient = Patient.objects.filter(data__first_name=first_name).filter(data__last_name=last_name).filter(data__email=email).filter(data__telephone_number=telephone_number)[0]
+            data = Data.objects.create(first_name=first_name, last_name=last_name, telephone_number=telephone_number, email=email)
+            data.save()
+            patient = Patient.objects.create(data=data)
+            patient.save()
+
+            # cursor = connection.cursor()
+            # cursor.callproc('INSERT_PATIENT', [first_name, last_name, telephone_number, email,])
+            # patient = Patient.objects.filter(data__first_name=first_name).filter(data__last_name=last_name).filter(data__email=email).filter(data__telephone_number=telephone_number)[0]
             
             user.refresh_from_db()
             user.profile.patient = patient
