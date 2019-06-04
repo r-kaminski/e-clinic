@@ -40,31 +40,28 @@ for city in cities:
         clinic.save()
 
 
-# For each clinic, create 20 doctors (2000 doctors total)
+# For each clinic, create 5 doctors (500 doctors total)
 for clinic in Clinic.objects.all():
     # Take 5 random specializations
     specs = random.sample(specializations, k=5)
-    # 5 specs * 4 entries = 20 doctors
     for spec in specs:
-        for i in range(4):
-            first_name = fake.first_name()
-            last_name = fake.last_name()
-            telephone_number = random.randint(range_start, range_end)
-            email = fake.email()
-            data = Data.objects.create(first_name=first_name, last_name=last_name, telephone_number=telephone_number, email=email)
-            data.save()
+        first_name = fake.first_name()
+        last_name = fake.last_name()
+        telephone_number = random.randint(range_start, range_end)
+        email = fake.email()
+        data = Data.objects.create(first_name=first_name, last_name=last_name, telephone_number=telephone_number, email=email)
+        data.save()
 
-            company_telephone = random.randint(range_start, range_end)
-            doctor = Doctor.objects.create(data=data, specialization=spec, clinic=clinic, company_telephone=company_telephone)
-            doctor.save()
+        company_telephone = random.randint(range_start, range_end)
+        doctor = Doctor.objects.create(data=data, specialization=spec, clinic=clinic, company_telephone=company_telephone)
+        doctor.save()
 
-# For each doctor, create 20 appointments
+# For each doctor, create 4 appointments (2000 appointments total)
 for doctor in Doctor.objects.all():
     price = random.randint(5, 10) * 25
-    for i in range(20):
+    for i in range(8):
         appointment_date = fake.date_this_year(before_today=False, after_today=True)
         clinic = Clinic.objects.get(clinic_id=doctor.clinic.clinic_id)
         address = clinic.address
         appointment = Appointment.objects.create(price=price, doctor=doctor, appointment_date=appointment_date, address=address)
         appointment.save()
-
